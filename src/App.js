@@ -15,20 +15,22 @@ import Admin from './Component/Admin/Admin';
 import Login from './Component/Login/Login';
 import PrivateRoute from './Component/PrivateRoute/PrivateRoute';
 import AddProduct from './Component/AddProduct/AddProduct';
+import MyOrder from './Component/MyOrder/MyOrder';
+import Footer from './Component/Footer/Footer';
 export const UserContext = createContext()
 function App() {
   const [loggedInUser, setLoggedInUSer] = useState({})
 
   const [product, setProduct] = useState([])
   useEffect(() => {
-    fetch('http://localhost:5055/allProdct')
+    fetch('https://limitless-taiga-08861.herokuapp.com/allProduct')
       .then(res => res.json())
       .then(data => setProduct(data))
   }, [])
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUSer]}>
       <Router>
-        
+
         <Switch>
           <Route exact path="/">
             <Home product={product}></Home>
@@ -36,6 +38,9 @@ function App() {
           <Route path="/home">
             <Home product={product}></Home>
           </Route>
+          <PrivateRoute path="/myOrders">
+            <MyOrder></MyOrder>
+          </PrivateRoute>
           <PrivateRoute path="/orders/:productId">
             <Orders></Orders>
           </PrivateRoute>
@@ -53,6 +58,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      <Footer></Footer>
     </UserContext.Provider>
   );
 }

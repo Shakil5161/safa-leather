@@ -8,8 +8,8 @@ const AllProduct = (props) => {
     return (
         <div >
             <div className='p-3'>
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={image} />
+                <Card style={{ width: '18rem', }}>
+                    <Card.Img variant="top" style={{height: '280px'}} src={image} />
                     <Card.Body>
                         <Card.Title>{name}</Card.Title>
 
