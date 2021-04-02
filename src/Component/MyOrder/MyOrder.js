@@ -31,7 +31,7 @@ const MyOrder = () => {
                         order.map(pd => <tr>
                             <td><img style={{height: '50px'}} src={pd.image} alt="" srcset=""/></td>
                             <td>{pd.name}</td>
-                            <td>{pd.price}</td>
+                            <td>{pd.price}$</td>
                             <td>{pd.date}</td>
                         </tr>)
                     }
